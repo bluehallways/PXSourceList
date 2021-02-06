@@ -37,7 +37,9 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 @end
 
 #pragma mark -
-@implementation PXSourceList
+@implementation PXSourceList {
+	NSObject *_windowDidBecomeMainObserver, *_windowDidResignMainObserver;
+}
 
 @synthesize reusableBadgeCell = _reusableBadgeCell;
 
@@ -75,6 +77,38 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
     _delegateDataSourceProxy = nil;
 }
 
+- (void)viewWillMoveToWindow:(NSWindow *)newWindow
+{
+	if (newWindow == nil) {
+		_windowDidBecomeMainObserver = nil;
+		_windowDidResignMainObserver = nil;
+		return;
+	}
+
+	__weak typeof(self) weakSelf = self;
+
+	_windowDidBecomeMainObserver =
+		[[NSNotificationCenter defaultCenter] addObserverForName:NSWindowDidBecomeMainNotification
+														  object:newWindow
+														   queue:[NSOperationQueue mainQueue]
+													  usingBlock:^(NSNotification * _Nonnull note) {
+			[weakSelf setNeedsDisplayOnAllRowBadges];
+	}];
+
+	_windowDidResignMainObserver =
+		[[NSNotificationCenter defaultCenter] addObserverForName:NSWindowDidResignMainNotification
+														  object:newWindow
+														   queue:[NSOperationQueue mainQueue]
+													  usingBlock:^(NSNotification * _Nonnull note) {
+			[weakSelf setNeedsDisplayOnAllRowBadges];
+	}];
+}
+
+- (void)setNeedsDisplay
+{
+	[self setNeedsDisplayOnAllRowBadges];
+	[super setNeedsDisplay];
+}
 
 #pragma mark -
 #pragma mark Custom Accessors
@@ -196,6 +230,30 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
             }
         }
     }
+}
+
+- (BOOL)becomeFirstResponder
+{
+	if ([super becomeFirstResponder]) {
+		if ([self isViewBasedSourceList]) {
+			[self setNeedsDisplayOnAllRowBadges];
+		}
+		return YES;
+	} else {
+		return NO;
+	}
+}
+
+- (BOOL)resignFirstResponder
+{
+	if ([super resignFirstResponder]) {
+		if ([self isViewBasedSourceList]) {
+			[self setNeedsDisplayOnAllRowBadges];
+		}
+		return YES;
+	} else {
+		return NO;
+	}
 }
 
 - (NSUInteger)numberOfGroups
@@ -464,6 +522,16 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
     self.reusableBadgeCell.highlighted = [self.selectedRowIndexes containsIndex:rowIndex];
 
     [self.reusableBadgeCell drawWithFrame:badgeFrame inView:self];
+}
+
+- (void)setNeedsDisplayOnAllRowBadges
+{
+	[self enumerateAvailableRowViewsUsingBlock:^(__kindof NSTableRowView * _Nonnull rowView, NSInteger row) {
+		NSView *columnView = [rowView viewAtColumn:0];
+		if ([columnView isKindOfClass:[PXSourceListTableCellView class]]) {
+			[[(PXSourceListTableCellView *)columnView badgeView] setNeedsDisplay];
+		}
+	}];
 }
 
 #pragma mark -
