@@ -12,12 +12,50 @@
 #import "PXSourceList.h"
 
 //Drawing constants
-static inline NSColor *badgeBackgroundColor() { return [NSColor colorWithCalibratedRed:(152/255.0) green:(168/255.0) blue:(202/255.0) alpha:1]; }
-static inline NSColor *badgeHiddenBackgroundColor() { return [NSColor colorWithDeviceWhite:(180/255.0) alpha:1]; }
-static inline NSColor *badgeSelectedTextColor() { return [NSColor keyboardFocusIndicatorColor]; }
-static inline NSColor *badgeSelectedUnfocusedTextColor() { return [NSColor colorWithCalibratedRed:(153/255.0) green:(169/255.0) blue:(203/255.0) alpha:1]; }
-static inline NSColor *badgeSelectedHiddenTextColor() { return [NSColor colorWithCalibratedWhite:(170/255.0) alpha:1]; }
-static inline NSFont *badgeFont() { return [NSFont boldSystemFontOfSize:11]; }
+static inline NSColor *badgeBackgroundColor() {
+	if (@available(macOS 10.14, *)) {
+		return [NSColor controlTextColor];
+	} else {
+		return [NSColor colorWithCalibratedRed:(152/255.0) green:(168/255.0) blue:(202/255.0) alpha:1];
+	}
+}
+static inline NSColor *badgeSelectedBackgroundColor() {
+	if (@available(macOS 10.14, *)) {
+		return [NSColor selectedMenuItemTextColor];
+	} else {
+		return [NSColor whiteColor];
+	}
+}
+static inline NSColor *badgeDeselectedTextColor() {
+	if (@available(macOS 10.14, *)) {
+		return [NSColor unemphasizedSelectedContentBackgroundColor];
+	} else {
+		return [NSColor whiteColor];
+	}
+}
+static inline NSColor *badgeHiddenBackgroundColor() {
+	return [NSColor colorWithDeviceWhite:(180/255.0) alpha:1];
+}
+static inline NSColor *badgeSelectedTextColor() {
+	if (@available(macOS 10.14, *)) {
+		return [NSColor controlAccentColor];
+	} else {
+		return [NSColor keyboardFocusIndicatorColor];
+	}
+}
+static inline NSColor *badgeSelectedUnfocusedTextColor() {
+	return [NSColor colorWithCalibratedRed:(153/255.0) green:(169/255.0) blue:(203/255.0) alpha:1];
+}
+static inline NSColor *badgeSelectedHiddenTextColor() {
+	if (@available(macOS 10.14, *)) {
+		return [NSColor unemphasizedSelectedContentBackgroundColor];
+	} else {
+		return [NSColor colorWithCalibratedWhite:(170/255.0) alpha:1];
+	}
+}
+static inline NSFont *badgeFont() {
+	return [NSFont boldSystemFontOfSize:11];
+}
 
 // Sizing constants.
 static const CGFloat badgeLeftAndRightPadding = 5.0;
@@ -42,8 +80,8 @@ static const CGFloat badgeLeftAndRightPadding = 5.0;
 	NSDictionary *attributes;
 	NSColor *backgroundColor;
 
-	if(self.isHighlighted || self.backgroundStyle == NSBackgroundStyleDark) {
-		backgroundColor = [NSColor whiteColor];
+	if (self.isHighlighted || self.backgroundStyle == NSBackgroundStyleDark) {
+		backgroundColor = badgeSelectedBackgroundColor();
 
         NSResponder *firstResponder = controlView.window.firstResponder;
         BOOL isFocused = NO;
@@ -74,7 +112,7 @@ static const CGFloat badgeLeftAndRightPadding = 5.0;
 
 		attributes = @{NSForegroundColorAttributeName: textColor};
 	} else {
-		NSColor *textColor = textColor = self.textColor ? self.textColor : [NSColor whiteColor];;
+		NSColor *textColor = textColor = self.textColor ? self.textColor : badgeDeselectedTextColor();
 
 		if(isMainWindowVisible)
             backgroundColor = self.backgroundColor ? self.backgroundColor : badgeBackgroundColor();
