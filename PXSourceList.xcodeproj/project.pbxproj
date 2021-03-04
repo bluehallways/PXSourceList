@@ -126,7 +126,6 @@
 		D263128B186EFC5C0036501C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Examples/ViewBasedSourceList/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		D263128D186EFC630036501C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Examples/ViewBasedSourceList/Images.xcassets; sourceTree = "<group>"; };
 		D263128F186EFC6D0036501C /* ViewBasedSourceList-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ViewBasedSourceList-Info.plist"; path = "Examples/ViewBasedSourceList/ViewBasedSourceList-Info.plist"; sourceTree = SOURCE_ROOT; };
-		D2631291186EFC7C0036501C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Examples/ViewBasedSourceList/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		D2631292186EFC830036501C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Examples/ViewBasedSourceList/main.m; sourceTree = SOURCE_ROOT; };
 		D2631294186EFC890036501C /* ViewBasedSourceList-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ViewBasedSourceList-Prefix.pch"; path = "Examples/ViewBasedSourceList/ViewBasedSourceList-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		D2631296186EFC910036501C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Examples/ViewBasedSourceList/en.lproj/Credits.rtf; sourceTree = SOURCE_ROOT; };
@@ -572,14 +571,6 @@
 				D263128B186EFC5C0036501C /* Base */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		D2631290186EFC7C0036501C /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D2631291186EFC7C0036501C /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		D2631295186EFC910036501C /* Credits.rtf */ = {
