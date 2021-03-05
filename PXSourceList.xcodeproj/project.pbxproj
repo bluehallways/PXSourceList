@@ -80,6 +80,7 @@
 /* Begin PBXFileReference section */
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		15FDCE7925F1C9790064101B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Examples/CellBasedSourceList/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		4CC5EA2A12DC81ED001F282E /* PXSourceList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PXSourceList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,7 +121,6 @@
 		D2631281186EFBDC0036501C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Examples/CellBasedSourceList/main.m; sourceTree = "<group>"; };
 		D2631283186EFBE50036501C /* PXSourceListDemo_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PXSourceListDemo_Prefix.pch; path = Examples/CellBasedSourceList/PXSourceListDemo_Prefix.pch; sourceTree = "<group>"; };
 		D2631284186EFBEB0036501C /* PXSourceListDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PXSourceListDemo-Info.plist"; path = "Examples/CellBasedSourceList/PXSourceListDemo-Info.plist"; sourceTree = "<group>"; };
-		D2631286186EFBFA0036501C /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = Examples/CellBasedSourceList/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D2631287186EFC4E0036501C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Examples/ViewBasedSourceList/AppDelegate.h; sourceTree = "<group>"; };
 		D2631288186EFC4E0036501C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Examples/ViewBasedSourceList/AppDelegate.m; sourceTree = "<group>"; };
 		D263128B186EFC5C0036501C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Examples/ViewBasedSourceList/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -429,19 +429,18 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1250;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PXSourceList" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				English,
-				Japanese,
-				French,
-				German,
 				en,
 				Base,
+				de,
+				fr,
+				ja,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* PXSourceList */;
 			projectDirPath = "";
@@ -559,7 +558,7 @@
 		D2631285186EFBFA0036501C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D2631286186EFBFA0036501C /* English */,
+				15FDCE7925F1C9790064101B /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -696,6 +695,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -735,6 +735,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
