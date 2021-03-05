@@ -606,6 +606,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.alexrozanski.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = PXSourceList;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -632,6 +633,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.alexrozanski.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = PXSourceList;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
