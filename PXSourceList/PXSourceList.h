@@ -9,11 +9,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "PXSourceListDelegate.h"
-#import "PXSourceListDataSource.h"
-#import "PXSourceListItem.h"
-#import "PXSourceListBadgeView.h"
-#import "PXSourceListTableCellView.h"
+#import <PXSourceList/PXSourceListDelegate.h>
+#import <PXSourceList/PXSourceListDataSource.h>
+#import <PXSourceList/PXSourceListItem.h>
+#import <PXSourceList/PXSourceListBadgeView.h>
+#import <PXSourceList/PXSourceListTableCellView.h>
 
 /**
 
