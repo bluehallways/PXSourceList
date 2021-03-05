@@ -112,7 +112,7 @@ static const CGFloat badgeLeftAndRightPadding = 5.0;
 
 		attributes = @{NSForegroundColorAttributeName: textColor};
 	} else {
-		NSColor *textColor = textColor = self.textColor ? self.textColor : badgeDeselectedTextColor();
+		NSColor *textColor = self.textColor ? self.textColor : badgeDeselectedTextColor();
 
 		if(isMainWindowVisible)
             backgroundColor = self.backgroundColor ? self.backgroundColor : badgeBackgroundColor();
